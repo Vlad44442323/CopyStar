@@ -22,15 +22,11 @@ Route::get('/where', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/catalog', [App\Http\Controllers\ProductController::class, 'index'])->name('catalog');
+Route::get('/catalog={code}', [App\Http\Controllers\ProductController::class, 'category'])->name('category');
 Route::group(['middleware'=> 'admin'], function ()
 {
-Route::get('/update/post/{id}','NewsController@updatePost')->name('updatePost');
-Route::get('/admin/add','NewsController@add')->name('add');
-Route::post('/update/{id}','NewsController@update')->name('update');
-Route::post('/admin/create','NewsController@create')->name('create');
-Route::get('/admin/del/{id}','NewsController@del')->name('del');
-Route::post('/admin/update/price/{id}','PriceController@update')->name('priceupdate');
-Route::get('/admin/update-price/{id}','PriceController@updateprice')->name('priceup');
-/*Route::get('/admin/addprice','PriceController@indexadd')->name('priceaddin');
-Route::post('/admin/priceadd','PriceController@add')->name('priceadd');*/
+    Route::get('/admin/addproduct', function () {
+        return view('admin.create-product');
+    });
+    Route::post('/admin/createproduct', [App\Http\Controllers\ProductController::class, 'create'])->name('createproduct');
 });

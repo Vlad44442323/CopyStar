@@ -63,7 +63,7 @@
             <section class="footer__top">
 	<div class="container">
 		<nav class="nav">
-			<div class="logo"><img src="images/logo.png" alt="test"></div>
+			<div class="logo"><img src="{{ asset ('images/logo.png')}}" alt="test"></div>
 			<ul class="nav my-auto">
 				<li class="nav-link"><a href="{{ url ('/#company')}}" class="nav__item">О нас</a></li>
 				<li class="nav-link"><a href="#" class="nav__item">Каталог</a></li>

@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function main()
+    {
+        $product = Product::latest()->get();
+        return view('Index',['product'=>$product]);
+    }
     public function index()
     {
        $product = Product::latest()->get();

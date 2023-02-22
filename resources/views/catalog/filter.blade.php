@@ -6,9 +6,8 @@
     <h1 class="text-center mb-3"><a href="{{route ('catalog')}}">Каталог</a></h1>
     <div class="list-category text-center mb-5 ">
         @foreach ($category as $cat)
-            <a href="{{route ('category',$cat->code)}}">{{$cat->name}}</a>
+           <a href="{{route ('category',$cat->code)}}" class="{{ request()->is('catalog='.$cat->code) ? 'active' : '' }}">{{$cat->name}}</a>
         @endforeach
-       <h3 class="text-center mt-3 mb-3">{{$only->name}}</h3> 
     </div>
     <div class="catalog">
         @if (count($products)) 

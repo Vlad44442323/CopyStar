@@ -130,6 +130,10 @@ body
     color: black;
     margin-right: 10px;
 }
+.active 
+{
+    background-color: #c9c9c95c!important;
+}
 @media (max-width: 991px)
 {
 .menu-btn {

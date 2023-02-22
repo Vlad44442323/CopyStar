@@ -18,7 +18,12 @@
                 <p class="price_product">{{number_format($p->price ,0, '',' ') }}</p>  
             </div>
             <p class="name_product">{{$p->name}}</p>
+            @if (Auth::user())
             <a href="#" class="btn btn-primary">В корзину</a>
+            @else
+            <a href="#" class="btn btn-primary">Подробнее</a>
+            @endif
+            
         </div>
         @endforeach
         @else

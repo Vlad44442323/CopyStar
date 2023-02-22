@@ -6,22 +6,12 @@
     <section class="main-new mb-5">
     <h1 class="text-center mb-3">Новинки</h1>
 <div class="new-product">
+    @foreach ($product as $p)
 <div class="carousel">
-    <img src="images/test.jpg" alt="test">
-    <h5>Название товара 1</h5>
+    <img src="{{asset ('public/storage/'.$p->img)}}" alt="test">
+    <h5>{{$p->name}}</h5>
     </div>
-    <div class="carousel">
-        <img src="images/2.jpg" alt="test">
-        <h5>Название товара 1</h5>
-        </div>
-        <div class="carousel">
-            <img src="images/3.jpg" alt="test">
-            <h5>Название товара 1</h5>
-            </div>
-        <div class="carousel">
-            <img src="images/test.jpg" alt="test">
-                <h5>Название товара 1</h5>
-        </div>
+    @endforeach
 </div>
 </section>
 <section class="about mt-5" id="company">

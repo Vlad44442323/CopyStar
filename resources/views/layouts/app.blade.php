@@ -20,7 +20,7 @@
 		<div class="logo"><a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset ('images/logo.png')}}" class="logotype" alt="test"></a></div>
 		<ul class="nav m-auto menu">
 			<li class="nav-link"><a href="{{ url ('/#company')}}" class="nav__item">О нас</a></li>
-			<li class="nav-link"><a href="#" class="nav__item">Каталог</a></li>
+			<li class="nav-link"><a href="{{route ('catalog')}}" class="nav__item">Каталог</a></li>
 			<li class="nav-link"><a href="{{ url ('/where')}}" class="nav__item">Где найти нас?</a></li>
 		</ul>
 		<ul class="nav autorize m-auto">
@@ -35,7 +35,7 @@
         @else
             <li class="dropdown d-flex">
                <img src="{{asset ('images/profile.png')}}" class="my-auto" alt="profile"> <a id="navbarDropdown" class="nav-profile dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
+                    {{ Auth::user()->lastname}} {{ Auth::user()->name }} {{ Auth::user()->patromyc }}
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

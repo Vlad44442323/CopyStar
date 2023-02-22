@@ -42,7 +42,7 @@
                             <label for="patromyc" class="col-md-4 col-form-label text-md-end">{{ __('Отчество (необязательно)') }}</label>
 
                             <div class="col-md-6">
-                                <input id="patromyc" type="text" class="form-control @error('patromyc') is-invalid @enderror" name="patromyc" value="{{ old('patromyc') }}" required autocomplete="patromyc" autofocus>
+                                <input id="patromyc" type="text" class="form-control @error('patromyc') is-invalid @enderror" name="patromyc" value="{{ old('patromyc') }}"  autocomplete="patromyc" autofocus>
 
                                 @error('patromyc')
                                     <span class="invalid-feedback" role="alert">
@@ -102,10 +102,9 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-
-                            <input id="password-confirm" type="checkbox" class="form-control" required>
-                            <div class="col-md-6">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Повторите пароль') }}</label>
+                            <div class="w-100 text-center">
+                            <input id="password-confirm" type="checkbox" required>
+                                <label for="password-confirm" class="col-form-label text-md-end">Cоглашаюсь с правилами</label>
                             </div>
                         </div>
                         <div class="row mb-0">

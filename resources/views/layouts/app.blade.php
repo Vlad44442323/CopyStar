@@ -19,7 +19,7 @@
 		<nav class="nav">
 		<div class="logo"><a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset ('images/logo.png')}}" class="logotype" alt="test"></a></div>
 		<ul class="nav m-auto menu">
-			<li class="nav-link"><a href="{{ url ('/#company')}}" class="nav__item">О нас</a></li>
+			<li class="nav-link"><a href="{{ url ('/')}}" class="nav__item">О нас</a></li>
 			<li class="nav-link"><a href="{{route ('catalog')}}" class="nav__item">Каталог</a></li>
 			<li class="nav-link"><a href="{{ url ('/where')}}" class="nav__item">Где найти нас?</a></li>
 		</ul>
@@ -90,7 +90,8 @@
     <script>
         $('.new-product').slick({
       slidesToShow: 3,
-      slidesToScroll: 1,
+      slidesToScroll: 2,
+      infinite:false,
       responsive: [
         {
           breakpoint: 1024,

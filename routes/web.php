@@ -20,6 +20,8 @@ Route::get('/where', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/catalog', [App\Http\Controllers\ProductController::class, 'index'])->name('catalog');
+Route::get('/product/article={id}', [App\Http\Controllers\ProductController::class, 'detail'])->name('product');
+
 Route::get('/catalog={code}', [App\Http\Controllers\ProductController::class, 'category'])->name('category');
 Route::group(['middleware'=> 'admin'], function ()
 {

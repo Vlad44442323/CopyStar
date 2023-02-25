@@ -6,7 +6,7 @@
     <h1 class="text-center mb-3"><a href="{{route ('catalog')}}">Каталог</a></h1>
     <div class="list-category text-center mb-5 ">
         @foreach ($category as $cat)
-           <a href="{{route ('category',$cat->code)}}" class="{{ request()->is('catalog='.$cat->code) ? 'active' : '' }}">{{$cat->name}}</a>
+           <a href="{{route ('category',$cat->code)}}" class="{{ request()->is('catalog='.$cat->code) ? 'activiti' : '' }}">{{$cat->name}}</a>
         @endforeach
     </div>
     <div class="catalog">

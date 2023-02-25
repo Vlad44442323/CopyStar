@@ -11,7 +11,7 @@ class ProductController extends Controller
 
     public function main()
     {
-        $product = Product::latest()->get();
+        $product = Product::latest()->limit(5)->get();
         return view('Index',['product'=>$product]);
     }
     public function index()
@@ -19,6 +19,11 @@ class ProductController extends Controller
        $product = Product::latest()->get();
        $category = Category::all();
        return view('catalog.index',['product'=>$product,'category'=>$category]);
+    }
+    public function detail($id)
+    {
+        $product = Product::find($id);
+        return view('catalog.product',['product'=>$product]);
     }
     public function category($code)
     {

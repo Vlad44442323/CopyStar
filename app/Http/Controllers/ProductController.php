@@ -25,6 +25,11 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('catalog.product',['product'=>$product]);
     }
+    public function delete($id)
+    {
+        $product = Product::find($id)->delete();
+        return redirect()->back();
+    }
     public function category($code)
     {
         $category = Category::all();
@@ -36,6 +41,21 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $product = new Product();
+        $product->name=$request->input('name');
+        $product->price=$request->input('price');
+        $product->desc=$request->input('desc');
+        $product->img=$request->file('img')->store('upload', 'public');
+        $product->country=$request->input('country');
+        $product->year=$request->input('year');
+        $product->model=$request->input('model');
+        $product->quantity=$request->input('quantity');
+        $product->category_id=$request->input('category_id');
+        $product->save();
+        return redirect()->route('catalog');
+    }
+    public function update($id, Request $request)
+    {
+        $product = Product::find($id);
         $product->name=$request->input('name');
         $product->price=$request->input('price');
         $product->desc=$request->input('desc');

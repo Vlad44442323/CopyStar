@@ -39,11 +39,19 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                 @if (Auth::check())
+                   @if (Auth::user()->role ==="admin")
+                   <a class="dropdown-item" href="{{route('addproduct')}}">Добавить товар</a>
+                   @endif
+                 @endif
+
+
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Выйти') }}
                     </a>
+
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -59,7 +67,8 @@
 </header>
             <div class="content">
             @yield('content')
-          </div>
+          </div>          
+         
             <section class="footer__top">
 	<div class="container">
 		<nav class="nav">
@@ -139,6 +148,4 @@
     });
     </script>
     </html>
-    
-</html>
 

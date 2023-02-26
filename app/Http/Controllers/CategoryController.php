@@ -7,35 +7,18 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function create(Request $request)
     {
-
+        $category = new Category();
+        $category->name=$request->input('name');
+        $category->code=$request->input('code');
+        $category->save();
+        return redirect()->route('catalog');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function addProduct(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $category = Category::all();
+        return view('admin.create-product',['category'=>$category]);
     }
 
     /**

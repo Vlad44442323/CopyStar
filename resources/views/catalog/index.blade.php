@@ -8,6 +8,7 @@
         @foreach ($category as $cat)
             <a href="{{route ('category',$cat->code)}}">{{$cat->name}}</a>
         @endforeach
+        <a href="{{route ('addcatalog')}}" class="category__plus">+</a>
     </div>
     <div class="catalog">
         @if(count($product))
@@ -25,6 +26,32 @@
             @else
             <a href="{{route ('product',$p->id)}}" class="btn btn-primary">Подробнее</a>
             @endif
+            @if (Auth::check())
+            @if (Auth::user()->role === "admin")
+                <a href="#" class="btn btn-outline-success">🖊</a>
+                <a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    🧺
+                </a>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title fs-5" id="exampleModalLabel">Подтвердите действие</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                        </div>
+                        <div class="modal-body">
+                          Вы действительно хотите удалить товар «{{$p->name}}» 
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                          <a href="{{ route('deleteproduct', $p->id) }}" class="btn btn-outline-danger">Удалить</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            @endif
+                
+            @endif
             
         </div>
         @endforeach
@@ -35,4 +62,5 @@
         @endif
     </div>
 </div>
+
 @endsection

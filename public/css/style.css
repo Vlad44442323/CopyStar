@@ -199,6 +199,13 @@ body
 {
     border-bottom: 1px solid #e6e6e6;
 }
+.category__plus
+{
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 10px;
+}
 @media (max-width: 991px)
 {
     .list-info__product

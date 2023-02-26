@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
-@section('title', 'Добавить товар')
+@section('title', 'Измененить товар')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Добавление товара') }}</div>
+                <div class="card-header">{{ __('Изменение товара') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('createproduct') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('updateproduct', $product->id) }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">Название товара</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" required>
+                                <input id="name" type="text" class="form-control" placeholder="{{$product->name}}" name="name" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -45,10 +45,9 @@
                             <div class="col-md-6">
                                 <select name="category_id" id="category_id" class="form-control" required>
                                     <option hidden>Не выбрано</option>
-                                    @foreach ($category as $cat)
-                                    <option value="{{$cat->id}}">{{$cat->name}}</option>  
-                                    @endforeach
-
+                                    <option value="1">Лазерные принтеры</option>
+                                    <option value="2">Струйные принтеры</option>
+                                    <option value="3">Термопринтеры</option>
                                 </select>
                             </div>
                         </div>

@@ -25,8 +25,13 @@ Route::get('/product/article={id}', [App\Http\Controllers\ProductController::cla
 Route::get('/catalog={code}', [App\Http\Controllers\ProductController::class, 'category'])->name('category');
 Route::group(['middleware'=> 'admin'], function ()
 {
-    Route::get('/admin/addproduct', function () {
-        return view('admin.create-product');
-    });
+    Route::get('/admin/addcatalog', function () {
+        return view('admin.create-category');
+    })->name('addcatalog');
+    Route::get('/admin/addproduct', [App\Http\Controllers\CategoryController::class, 'addProduct'])->name('addproduct');
     Route::post('/admin/createproduct', [App\Http\Controllers\ProductController::class, 'create'])->name('createproduct');
+    Route::post('/admin/createcategory', [App\Http\Controllers\CategoryController::class, 'create'])->name('createcategory');
+    Route::post('/admin/update/product/article={id}', [App\Http\Controllers\ProductController::class, 'update'])->name('updateproduct');
+    Route::get('/admin/delete/product/article={id}', [App\Http\Controllers\ProductController::class, 'delete'])->name('deleteproduct');
+    Route::get('/admin/update/product/article={id}', [App\Http\Controllers\ProductController::class, 'update'])->name('updateproduct');
 });

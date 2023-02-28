@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -20,9 +22,9 @@ class ProductController extends Controller
        $category = Category::all();
        return view('catalog.index',['product'=>$product,'category'=>$category]);
     }
-    public function detail($id)
+    public function detail($name)
     {
-        $product = Product::find($id);
+        $product = Product::where('name',$name)->first();
         return view('catalog.product',['product'=>$product]);
     }
     public function delete($id)
@@ -33,9 +35,9 @@ class ProductController extends Controller
     public function category($code)
     {
         $category = Category::all();
-        $only =Category::where('code',$code)->first();
-        $products = $only->products()->latest()->get();
-        return view('catalog.filter',['only'=>$only,'category'=>$category,'products'=>$products]);
+        $title =Category::where('code',$code)->first();
+        $products = $title->products()->latest()->get();
+        return view('catalog.filter',['title'=>$title,'category'=>$category,'products'=>$products]);
         /*dd($category);*/
     }
     public function create(Request $request)
@@ -67,5 +69,11 @@ class ProductController extends Controller
         $product->category_id=$request->input('category_id');
         $product->save();
         return redirect()->route('catalog');
+    }
+    public function updateIndex($id)
+    {
+        $product = Product::find($id);
+        $category= Category::all();
+        return view('admin.update-product',['product'=>$product,'category'=>$category]);
     }
 }

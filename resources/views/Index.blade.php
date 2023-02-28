@@ -7,7 +7,7 @@
     <h1 class="text-center mb-3">Новинки</h1>
 <div class="new-product">
     @foreach ($product as $p)
-    <a href="{{route ('product',$p->id)}}">
+    <a href="{{route ('product',$p->name)}}">
         <div class="carousel">
     <img src="{{asset ('public/storage/'.$p->img)}}" alt="test">
     <h5>{{$p->name}}</h5>
@@ -18,7 +18,7 @@
 </section>
 <section class="about mt-5" id="company">
 <h1 class="text-center mb-5">О нас</h1>
-<img src="images/about.png" alt="test">
+<img src="{{asset ('public/images/about.png')}}" alt="test">
 <p>Молодая компания "Copy Star", которая занимается продажей копировального оборудования. У нас расширенный ассортимент. 
     Компания начала свою работу в 2023 году, и, несмотря на высокую конкуренцию, практически
      сразу вошла в топ поставщиков оргтехники и печатного оборудования. 

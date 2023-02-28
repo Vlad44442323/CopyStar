@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Каталог')
+@section('title', ($product->name) )
 @section('content')
 <div class="container">
     <div class="product-info">
@@ -10,7 +10,12 @@
         <div class="price-card">
             <p class="price-title">Цена:</p>
         <p class="price_product">{{number_format($product->price ,0, '',' ') }}</p>
+        @if (Auth::user())
         <a href="#" class="btn btn-primary w-100 mt-3">В корзину</a> 
+        @else
+        Для того, чтобы добавить в корзину, нужно авторизоваться.
+        @endif
+        
     </div>
     </div>
     <div class="description-product">
@@ -34,6 +39,10 @@
     <div class="haracteristic mt-4">
         <p class="har-title">Страна-производитель</p>
         <p>{{ $product->country }}</p>
+    </div>
+    <div class="haracteristic mt-4">
+        <p class="har-title">Артикул</p>
+        <p>{{ $product->id }}</p>
     </div>
 </div>
 </div>

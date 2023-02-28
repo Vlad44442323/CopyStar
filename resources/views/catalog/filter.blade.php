@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Каталог')
+@section('title', ($title->name))
 @section('content')
 <div class="container">
     <h1 class="text-center mb-3"><a href="{{route ('catalog')}}">Каталог</a></h1>
@@ -8,13 +8,18 @@
         @foreach ($category as $cat)
            <a href="{{route ('category',$cat->code)}}" class="{{ request()->is('catalog='.$cat->code) ? 'activiti' : '' }}">{{$cat->name}}</a>
         @endforeach
-        <a href="{{route ('addcatalog')}}" class="category__plus">+</a>
+        @if (Auth::check())
+          @if (Auth::user()->role === "admin")
+          <a href="{{route ('addcatalog')}}" class="category__plus">+</a>
+          @endif
+        @endif
+       
     </div>
     <div class="catalog">
         @if (count($products)) 
         @foreach ($products as $p )
         <div class="info-card">
-            <a href="{{route ('product',$p->id)}}">
+            <a href="{{route ('product',$p->name)}}">
             <img src="{{asset ('public/storage/'.$p->img)}}" alt="test">
             <div class="card-title">
                 <p class="price_product">{{number_format($p->price ,0, '',' ') }}</p>  
@@ -28,7 +33,7 @@
             @endif
             @if (Auth::check())
             @if (Auth::user()->role === "admin")
-                <a href="#" class="btn btn-outline-success">🖊</a>
+            <a href="{{ route('updateIndex',$p->id) }}" class="btn btn-outline-success">🖊</a>
                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     🧺
                   </button>

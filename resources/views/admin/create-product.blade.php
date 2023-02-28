@@ -73,7 +73,8 @@
                         <div class="row mb-3">
                             <label for="img" class="col-md-4 col-form-label text-md-end">Фотография</label>
                             <div class="col-md-6">
-                                <input id="img" type="file" class="form-control" name="img" required>
+                                <input id="file" type="file" class="form-control" name="img" required>
+                                <img src="" id="image" style="max-width: 600px; display: none;"/>
                             </div>
                         </div>
                         <div class="w-100 text-center mt-5 mb-3">

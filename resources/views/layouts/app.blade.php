@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
 </head>
 <header class="mb-5">
 	<div class="container">
@@ -17,7 +17,7 @@
 			<span></span>
 		</div>
 		<nav class="nav">
-		<div class="logo"><a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset ('images/logo.png')}}" class="logotype" alt="test"></a></div>
+		<div class="logo"><a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset ('public/images/logo.png')}}" class="logotype" alt="test"></a></div>
 		<ul class="nav m-auto menu">
 			<li class="nav-link"><a href="{{ url ('/')}}" class="nav__item">О нас</a></li>
 			<li class="nav-link"><a href="{{route ('catalog')}}" class="nav__item">Каталог</a></li>
@@ -34,7 +34,7 @@
             @endif
         @else
             <li class="dropdown d-flex">
-               <img src="{{asset ('images/profile.png')}}" class="my-auto" alt="profile"> <a id="navbarDropdown" class="nav-profile dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+               <img src="{{asset ('public/images/profile.png')}}" class="my-auto" alt="profile"> <a id="navbarDropdown" class="nav-profile dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->lastname}} {{ Auth::user()->name }} {{ Auth::user()->patromyc }}
                 </a>
 
@@ -42,6 +42,8 @@
                  @if (Auth::check())
                    @if (Auth::user()->role ==="admin")
                    <a class="dropdown-item" href="{{route('addproduct')}}">Добавить товар</a>
+                   <a class="dropdown-item" href="{{route('settingcat')}}">Настройки категории</a>
+                   
                    @endif
                  @endif
 
@@ -72,7 +74,7 @@
             <section class="footer__top">
 	<div class="container">
 		<nav class="nav">
-			<div class="logo"><img src="{{ asset ('images/logo.png')}}" alt="test"></div>
+			<div class="logo"><img src="{{ asset ('public/images/logo.png')}}" alt="test"></div>
 			<ul class="nav my-auto">
 				<li class="nav-link"><a href="{{ url ('/#company')}}" class="nav__item">О нас</a></li>
 				<li class="nav-link"><a href="#" class="nav__item">Каталог</a></li>
@@ -86,6 +88,15 @@
 </section>
 </body>
 <script>
+ let image = document.getElementById("image");
+let file = document.getElementById("file");
+
+file.addEventListener('change', function(){
+  image.src = URL.createObjectURL(file.files[0]);
+  image.style.display = "block";
+});
+</script>
+<script>
     let menuBtn = document.querySelector('.menu-btn');
     let menu = document.querySelector('.menu');
     menuBtn.addEventListener('click', function(){
@@ -93,9 +104,9 @@
         menu.classList.toggle('active');
     })
     </script>
-    <script src="{{ asset('js/app.js')}}" type="text/javascript"></script>
-     <script src="{{ asset('js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('slick/slick.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('public/js/app.js')}}" type="text/javascript"></script>
+     <script src="{{ asset('public/js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('public/slick/slick.min.js')}}" type="text/javascript"></script>
     <script>
         $('.new-product').slick({
       slidesToShow: 3,

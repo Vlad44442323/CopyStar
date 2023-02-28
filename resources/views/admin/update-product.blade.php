@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Измененить товар')
+@section('title', ('Измененить товар'))
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -16,28 +16,28 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">Название товара</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" placeholder="{{$product->name}}" name="name" required>
+                                <input id="name" type="text" class="form-control" value="{{$product->name}}" name="name" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="model" class="col-md-4 col-form-label text-md-end">Модель</label>
 
                             <div class="col-md-6">
-                                <input id="model" type="text" class="form-control" name="model" required>
+                                <input id="model" type="text" class="form-control" value="{{$product->model}}" name="model" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="price" class="col-md-4 col-form-label text-md-end">Стоимость товара (в рублях)</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="number" pattern="[0-9]" class="form-control" name="price" required>
+                                <input id="price" type="number" pattern="[0-9]" class="form-control" value="{{$product->price}}" name="price" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="desc" class="col-md-4 col-form-label text-md-end">Описание товара</label>
 
                             <div class="col-md-6">
-                                <textarea name="desc" id="desc" cols="30" rows="7" class="form-control"></textarea>
+                                <textarea name="desc" id="desc" cols="30" rows="7" class="form-control">{{$product->desc}}</textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -45,9 +45,11 @@
                             <div class="col-md-6">
                                 <select name="category_id" id="category_id" class="form-control" required>
                                     <option hidden>Не выбрано</option>
-                                    <option value="1">Лазерные принтеры</option>
-                                    <option value="2">Струйные принтеры</option>
-                                    <option value="3">Термопринтеры</option>
+                                    @foreach ($category as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                    @endforeach
+                                    
+
                                 </select>
                             </div>
                         </div>
@@ -65,14 +67,15 @@
                         <div class="row mb-3">
                             <label for="year" class="col-md-4 col-form-label text-md-end">Год выпуска</label>
                             <div class="col-md-6">
-                                <input id="year" type="number" class="form-control" name="year" required>
+                                <input id="year" type="number" class="form-control" value="{{ $product->year }}" name="year" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="img" class="col-md-4 col-form-label text-md-end">Фотография</label>
                             <div class="col-md-6">
-                                <input id="img" type="file" class="form-control" name="img" required>
+                                <input id="file" type="file" value="{{asset ('public/storage/'.$product->img)}}" class="form-control" name="img">
+                                <img src="{{ asset('/public/storage/'.$product->img)}}" id="image" style="max-width: 600px;"/>
                             </div>
                         </div>
                         <div class="w-100 text-center mt-5 mb-3">

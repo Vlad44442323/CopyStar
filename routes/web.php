@@ -20,8 +20,8 @@ Route::get('/where', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/catalog', [App\Http\Controllers\ProductController::class, 'index'])->name('catalog');
-Route::get('/product/article={id}', [App\Http\Controllers\ProductController::class, 'detail'])->name('product');
-
+Route::get('/product={name}', [App\Http\Controllers\ProductController::class, 'detail'])->name('product');
+Route::get('/basket{iduser}', [App\Http\Controllers\BasketController::class, 'basketIndex'])->name('basketIndex');
 Route::get('/catalog={code}', [App\Http\Controllers\ProductController::class, 'category'])->name('category');
 Route::group(['middleware'=> 'admin'], function ()
 {
@@ -34,4 +34,10 @@ Route::group(['middleware'=> 'admin'], function ()
     Route::post('/admin/update/product/article={id}', [App\Http\Controllers\ProductController::class, 'update'])->name('updateproduct');
     Route::get('/admin/delete/product/article={id}', [App\Http\Controllers\ProductController::class, 'delete'])->name('deleteproduct');
     Route::get('/admin/update/product/article={id}', [App\Http\Controllers\ProductController::class, 'update'])->name('updateproduct');
+    Route::get('/admin/category/settings', [App\Http\Controllers\CategoryController::class, 'settingIndex'])->name('settingcat');
+    Route::get('/admin/update/product/article={id}', [App\Http\Controllers\ProductController::class, 'updateIndex'])->name('updateIndex');
+    Route::get('/admin/category/settings={code}', [App\Http\Controllers\CategoryController::class, 'settingOne'])->name('settingOne');
+    Route::post('/admin/category/settings={id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('updatecat');
+    Route::get('/admin/category/settings/delete={id}', [App\Http\Controllers\CategoryController::class, 'delete'])->name('deletecat');
+
 });

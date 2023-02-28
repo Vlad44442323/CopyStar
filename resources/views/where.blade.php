@@ -18,7 +18,7 @@
 </section>
 <section class="map mt-5 text-center mb-5" id="company">
 <h1 class="mb-5">Наш офис</h1>
-<img src="images/map.jpg" class="w-100" alt="map">
+<img src="{{ asset('public/images/map.jpg')}}" class="w-100" alt="map">
 </section>
 </div>
 </body>

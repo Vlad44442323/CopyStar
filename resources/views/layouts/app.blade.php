@@ -17,7 +17,11 @@
 			<span></span>
 		</div>
 		<nav class="nav">
-		<div class="logo"><a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset ('public/images/logo.png')}}" class="logotype" alt="test"></a></div>
+		<div class="logo">
+      <a class="navbar-brand" href="{{ url('/') }}">
+      <img src="{{ asset ('public/images/logo.png')}}" class="logotype" alt="test">
+      </a>
+    </div>
 		<ul class="nav m-auto menu">
 			<li class="nav-link"><a href="{{ url ('/')}}" class="nav__item">О нас</a></li>
 			<li class="nav-link"><a href="{{route ('catalog')}}" class="nav__item">Каталог</a></li>

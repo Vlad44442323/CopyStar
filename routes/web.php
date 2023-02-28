@@ -21,8 +21,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/catalog', [App\Http\Controllers\ProductController::class, 'index'])->name('catalog');
 Route::get('/product={name}', [App\Http\Controllers\ProductController::class, 'detail'])->name('product');
-Route::get('/basket{iduser}', [App\Http\Controllers\BasketController::class, 'basketIndex'])->name('basketIndex');
 Route::get('/catalog={code}', [App\Http\Controllers\ProductController::class, 'category'])->name('category');
+Route::post('/basket/add/{id}',[ App\Http\Controllers\BasketController::class, 'add'])
+    ->where('id', '[0-9]+')
+    ->name('basket.add');
 Route::group(['middleware'=> 'admin'], function ()
 {
     Route::get('/admin/addcatalog', function () {

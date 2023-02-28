@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('baskets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->OnDelete('cascade');
-            $table->foreignId('product_id')->references('id')->on('products')->OnDelete('cascade');
-            $table->unsignedTinyInteger('quantity');
+            $table->foreignId('user_id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

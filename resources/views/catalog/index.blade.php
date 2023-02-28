@@ -3,7 +3,7 @@
 @section('title', 'Каталог')
 @section('content')
 <div class="container">
-    <h1 class="text-center mb-3">Каталог</h1>
+    <h1 class="text-center mb-3">Категории</h1>
     <div class="list-category text-center mb-5 ">
         @foreach ($category as $cat)
             <a href="{{route ('category',$cat->code)}}">{{$cat->name}}</a>

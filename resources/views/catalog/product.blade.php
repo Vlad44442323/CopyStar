@@ -11,7 +11,15 @@
             <p class="price-title">Цена:</p>
         <p class="price_product">{{number_format($product->price ,0, '',' ') }}</p>
         @if (Auth::user())
-        <a href="#" class="btn btn-primary w-100 mt-3">В корзину</a> 
+        <form action="{{ route('basket.add', $product->id) }}"
+            method="post" class="form-inline">
+          @csrf
+          <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Добавить в корзину</button>
+          <label for="input-quantity">Количество</label>
+          <input type="number" name="quantity" id="input-quantity" value="1"
+                 class="form-control mx-2 w-25">
+      </form>
+  </div>
         @else
         Для того, чтобы добавить в корзину, нужно авторизоваться.
         @endif

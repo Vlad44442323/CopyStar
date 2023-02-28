@@ -3,7 +3,7 @@
 @section('title', ($title->name))
 @section('content')
 <div class="container">
-    <h1 class="text-center mb-3"><a href="{{route ('catalog')}}">Каталог</a></h1>
+    <h1 class="text-center mb-3"><a href="{{route ('catalog')}}">Категории</a></h1>
     <div class="list-category text-center mb-5 ">
         @foreach ($category as $cat)
            <a href="{{route ('category',$cat->code)}}" class="{{ request()->is('catalog='.$cat->code) ? 'activiti' : '' }}">{{$cat->name}}</a>

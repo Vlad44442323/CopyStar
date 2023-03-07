@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('year');
             $table->string('model');
             $table->integer('quantity')->nullable();
-            $table->foreignId('category_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

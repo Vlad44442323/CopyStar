@@ -31,7 +31,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Middleware\\admin' => $baseDir . '/app/Http/Middleware/admin.php',
     'App\\Models\\Basket' => $baseDir . '/app/Models/Basket.php',
-    'App\\Models\\BasketProduct' => $baseDir . '/app/Models/BasketProduct.php',
+    'App\\Models\\Basket_product' => $baseDir . '/app/Models/Basket_product.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

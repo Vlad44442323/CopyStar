@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BasketProduct;
+use App\Models\Basket_product;
 use Illuminate\Http\Request;
 
 class BasketProductController extends Controller
@@ -41,10 +41,10 @@ class BasketProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BasketProduct  $basketProduct
+     * @param  \App\Models\Basket_product  $basket_product
      * @return \Illuminate\Http\Response
      */
-    public function show(BasketProduct $basketProduct)
+    public function show(Basket_product $basket_product)
     {
         //
     }
@@ -52,10 +52,10 @@ class BasketProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BasketProduct  $basketProduct
+     * @param  \App\Models\Basket_product  $basket_product
      * @return \Illuminate\Http\Response
      */
-    public function edit(BasketProduct $basketProduct)
+    public function edit(Basket_product $basket_product)
     {
         //
     }
@@ -64,10 +64,10 @@ class BasketProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BasketProduct  $basketProduct
+     * @param  \App\Models\Basket_product  $basket_product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BasketProduct $basketProduct)
+    public function update(Request $request, Basket_product $basket_product)
     {
         //
     }
@@ -75,10 +75,10 @@ class BasketProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BasketProduct  $basketProduct
+     * @param  \App\Models\Basket_product  $basket_product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BasketProduct $basketProduct)
+    public function destroy(Basket_product $basket_product)
     {
         //
     }

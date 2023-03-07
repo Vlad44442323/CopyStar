@@ -13,6 +13,6 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
     public function baskets() {
-        return $this->belongsToMany(Basket::class)->withPivot('quantity');
+        return $this->belongsToMany(Basket::class,'basket_products', 'product_id');
     }
 }

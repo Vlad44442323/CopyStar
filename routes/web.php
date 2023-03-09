@@ -23,6 +23,7 @@ Route::get('/catalog', [App\Http\Controllers\ProductController::class, 'index'])
 Route::get('/product={name}', [App\Http\Controllers\ProductController::class, 'detail'])->name('product');
 Route::get('/catalog={code}', [App\Http\Controllers\ProductController::class, 'category'])->name('category');
 Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->name('index-basket');
+Route::get('/cart/pay/{id}', [App\Http\Controllers\CartController::class, 'pay'])->name('pay');
 Route::post('/basket/add/{id}',[ App\Http\Controllers\BasketController::class, 'add'])
     ->where('id', '[0-9]+')
     ->name('basket.add');

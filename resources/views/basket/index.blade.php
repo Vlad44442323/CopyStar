@@ -49,6 +49,7 @@
     @endforeach
 </table>
 <p class="sum text-center">Итого: {{ number_format($itemSum, 2, '.', '') }} ₽</p>
+<div class="text-center"><button class="btn btn-primary">Оформить</button></div>
     @else
     <p class="text-center pusto">Ваша корзина пустая</p>
     <div class="text-center"><button class="btn btn-primary">Оформить заказ</button></div>

@@ -7,7 +7,7 @@
     <div class="list-category text-center mb-5 ">
         @foreach ($category as $cat)
             <a href="{{route ('category',$cat->code)}}">{{$cat->name}}</a>
-        @endforeach
+        @endforeach 
         @if (Auth::check())
         @if (Auth::user()->role === "admin")
         <a href="{{route ('addcatalog')}}" class="category__plus">+</a>

@@ -15,7 +15,7 @@ class User extends Authenticatable
 
     public function basket()
     {
-        return $this->hasMany(Basket::class);
+        return $this->belongsTo(Basket::class, 'id', 'id_user');
     }
 
     protected $fillable = [

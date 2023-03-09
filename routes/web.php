@@ -26,6 +26,12 @@ Route::get('/basket', [App\Http\Controllers\BasketController::class, 'index'])->
 Route::post('/basket/add/{id}',[ App\Http\Controllers\BasketController::class, 'add'])
     ->where('id', '[0-9]+')
     ->name('basket.add');
+    Route::post('/basket/update/{id}',[ App\Http\Controllers\BasketController::class, 'update'])
+    ->where('id', '[0-9]+')
+    ->name('basket.update');
+    Route::get('/basket/delete/{id}',[ App\Http\Controllers\BasketController::class, 'delete'])
+    ->where('id', '[0-9]+')
+    ->name('basket.delete');
 Route::group(['middleware'=> 'admin'], function ()
 {
     Route::get('/admin/addcatalog', function () {

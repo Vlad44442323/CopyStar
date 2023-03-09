@@ -8,13 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Basket extends Model
 {
     use HasFactory;
+    protected $table = "baskets";
 
-    public function products() {
-        return $this->belongsToMany(Product::class, 'basket_products', 'basket_id');
-    }
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
-    protected $fillable = ['user_id'];
+        public function user()
+        {
+            return $this->hasOne(User::class, 'id','id_user');
+        }
+        public function product()
+        {
+            return $this->hasOne(Product::class, 'id','id_product');
+        }
+        protected $fillable = [
+            'user_id',
+            'product_id',
+            'quantity',
+        ];
 }

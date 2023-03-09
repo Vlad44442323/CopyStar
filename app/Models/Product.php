@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $table = "products";
     use HasFactory;
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    public function baskets() {
-        return $this->belongsToMany(Basket::class,'basket_products', 'product_id');
+    public function basket()
+    {
+        return $this->belongsTo(Basket::class, 'id', 'id_product');
     }
 }

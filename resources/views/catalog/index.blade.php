@@ -26,7 +26,12 @@
             <p class="name_product">{{$p->name}}</p>
         </a>
             @if (Auth::user())
-            <a href="#" class="btn btn-primary">В корзину</a>
+            <form action="{{ route('basket.add', $p->id) }}"
+            method="post">
+          @csrf
+          <button type="submit" class="btn btn-primary">В корзину</button>
+          <input type="number" class="d-none" value="1" name="quantity">
+      </form>
             @else
             <a href="{{route ('product',$p->id)}}" class="btn btn-primary">Подробнее</a>
             @endif

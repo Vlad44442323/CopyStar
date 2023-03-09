@@ -9,7 +9,7 @@
     @foreach ($product as $p)
     <a href="{{route ('product',$p->name)}}">
         <div class="carousel">
-    <img src="{{asset ('public/storage/'.$p->img)}}" alt="test">
+    <img src="{{asset ('/public/storage/'.$p->img)}}" alt="test">
     <h5>{{$p->name}}</h5>
     </div>
     </a>

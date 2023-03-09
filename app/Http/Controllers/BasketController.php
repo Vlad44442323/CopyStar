@@ -8,29 +8,51 @@ use App\Models\Basket_product;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class BasketController extends Controller
 {   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function add(Request $request, $id)
     {
-        $basket = new Basket_product();
-        $user_id = Auth::user()->id;
-        $product_id = Product::find($id)->id;
-        $basket_id  = Basket::create(['user_id' => $user_id])->id;
-        $basket->basket_id = $request->input('basket_id', $basket_id);
-        $basket->product_id = $request->input('product_id',$product_id);
+        
+        $id_user = Auth::user()->id;
+        $id_product = Product::find($id)->id;
+        $basket = new Basket();
+        $basket->id_user = $request->input('id_user', $id_user);
+        $basket->id_product = $request->input('id_product',$id_product);
         $basket->quantity = $request->input('quantity');
         $basket->save();
         return back();
     }
     public function index()
-    {    
-        $user = Auth::user()->id;
-        $products = Basket::where('user_id', $user)->first();
+    {   
+        $basket = Basket::where('id_user', Auth::user()->id)->get();
+       $products = Product::find($basket);
+       /* dd($products);*/
         return view('basket.index',['product'=>$products]);
 
     }
-
+    public function update(Request $request, $id)
+    {
+        $product = Basket::find($id);
+        $product->quantity = $request->input('quantity');
+        if ( $product->quantity == 0)
+        {
+            Basket::find($id)->delete();
+        }
+        $product->save();
+        return back();
+    }
+    public function delete($id)
+    {
+        $basket = Basket::find($id)->delete();
+        return back();
+    }
     
 }
